@@ -4,11 +4,11 @@
       ref="accountCarousel" 
       :options="carouselOptions"
     >
-      <swiper-slide>Slide 1</swiper-slide>
-      <swiper-slide>Slide 2</swiper-slide>
-      <swiper-slide>Slide 3</swiper-slide>
-      <swiper-slide>Slide 4</swiper-slide>
-      <swiper-slide>Slide 5</swiper-slide>
+      <swiper-slide>Account 1</swiper-slide>
+      <swiper-slide>Account 2</swiper-slide>
+      <swiper-slide>Account 3</swiper-slide>
+      <swiper-slide>Account 4</swiper-slide>
+      <swiper-slide>Account 5</swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
@@ -31,10 +31,6 @@ export default {
         grabCursor: true,
         slidesPerView: 'auto', // this combined with set width of carousel panes gives us the "peeking" effect
         centeredSlides: true,
-        keyboard: {
-          enabled: true,
-          onlyInViewport: false,
-        },
       }
     }
   },
@@ -55,6 +51,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/** SWIPER STYLES **/
+
 .stage {
   max-width: 376px;
   margin: 0 auto;
@@ -65,18 +63,28 @@ export default {
 }
 
 .swiper-slide {
-  border: 1px solid black;
+  border: 1px solid #ccc;
   transition: all .2s;
   height: 196px;
   width: 312px;
   transform: scale(0.9);
   background-color: white;
   border-radius: 10px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
 }
 
 .swiper-slide-active {
   margin-top: 0;
   transform: scale(1);
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #006eb2;
+}
+
+.swiper-pagination-bullet {
+  height: 12px !important;
+  width: 12px !important;
 }
 
 @media only screen and (max-width: 376px) {
