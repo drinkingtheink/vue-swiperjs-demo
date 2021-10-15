@@ -1,14 +1,15 @@
 <template>
-  <div class="stage">
+  <div class="account-carousel-stage">
     <swiper 
+      class="account-carousel"
       ref="accountCarousel" 
       :options="carouselOptions"
     >
-      <swiper-slide>Account 1</swiper-slide>
-      <swiper-slide>Account 2</swiper-slide>
-      <swiper-slide>Account 3</swiper-slide>
-      <swiper-slide>Account 4</swiper-slide>
-      <swiper-slide>Account 5</swiper-slide>
+      <swiper-slide 
+        v-for="account in accounts"
+        :key="account.name"
+      >{{ account.name }}</swiper-slide>
+      
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
@@ -27,11 +28,34 @@ export default {
           el: '.swiper-pagination',
           clickable: true,
         },
-        spaceBetween: -8, // achieves the 15px gap between carousel slides as prescribed in final design
+        spaceBetween: -7.5, // achieves the 15px gap between carousel slides as prescribed in final design
         grabCursor: true,
         slidesPerView: 'auto', // this combined with set width of carousel panes gives us the "peeking" effect
         centeredSlides: true,
-      }
+        a11y: {
+          containerMessage: 'Your Accounts',
+          paginationBulletMessage: 'Go to Account {{index}}',
+          lastSlideMessage: 'This is the last Account in this list'
+        }
+      },
+      activePaneIndex: 0,
+      accounts: [
+        {
+          name: 'Account 1'
+        },
+        {
+          name: 'Account 2'
+        },
+        {
+          name: 'Account 3'
+        },
+        {
+          name: 'Account 4'
+        },
+        {
+          name: 'Account 5'
+        },
+      ]
     }
   },
   components: {
@@ -39,22 +63,33 @@ export default {
     SwiperSlide
   },
   computed: {
-    swiper() {
-      return this.$refs.accountCarousel.$swiper
+    swiperInstance() {
+      return this.$refs.accountCarousel.$swiper;
+    }
+  },
+  methods: {
+    goToPane(paneIndex) {
+      this.swiperInstance.slideTo(paneIndex);
+      this.updateActivePaneIndex(paneIndex);
+    },
+    updateActivePaneIndex(paneIndex) {
+      this.activePaneIndex = paneIndex;
     }
   },
   mounted() {
-    console.log('Current Swiper instance object', this.swiper)
+    console.log('Current Swiper instance object', this.swiperInstance)
   },
+  beforeDestroy() {
+    this.swiperInstance.destroy();
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 /** SWIPER STYLES **/
 
-.stage {
-  max-width: 376px;
+.account-carousel-stage {
+  max-width: 430px;
   margin: 0 auto;
 }
 
@@ -69,7 +104,7 @@ export default {
   width: 312px;
   transform: scale(0.9);
   background-color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -78,15 +113,25 @@ export default {
   transform: scale(1);
 }
 
+/** PAGINATION */ 
+.swiper-pagination-bullet {
+  height: 12px;
+  width: 12px;
+  opacity: 0.7;
+  margin: 0 0.5rem 0 0;
+  transition: all 0.2s;
+  background-color: #ccc;
+}
+
 .swiper-pagination-bullet-active {
   background-color: #006eb2;
 }
 
-.swiper-pagination-bullet {
-  height: 12px !important;
-  width: 12px !important;
+.swiper-pagination-bullet-active:hover {
+  opacity: 1;
 }
 
+/** MEDIA QUERIES */
 @media only screen and (max-width: 376px) {
   .stage {
     width: 100vw;
