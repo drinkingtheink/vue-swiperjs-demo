@@ -68,20 +68,11 @@ export default {
       return this.$refs.accountCarousel.$swiper;
     }
   },
-  methods: {
-    goToPane(paneIndex) {
-      this.swiperInstance.slideTo(paneIndex);
-      this.updateActivePaneIndex(paneIndex);
-    },
-    updateActivePaneIndex(paneIndex) {
-      this.activePaneIndex = paneIndex;
-    }
-  },
   mounted() {
     console.log('Current Swiper instance object', this.swiperInstance)
   },
   beforeDestroy() {
-    this.swiperInstance.destroy();
+    this.swiperInstance ? this.swiperInstance.destroy() : null;
   }
 }
 </script>
