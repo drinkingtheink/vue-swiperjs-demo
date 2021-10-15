@@ -31,9 +31,8 @@ export default {
         spaceBetween: 10, // achieves the 15px gap between carousel slides as prescribed in final design
         grabCursor: true,
         // slidesPerView: 'auto', // this combined with set width of carousel panes gives us the "peeking" effect
-        slidesPerView: 1.2,
+        slidesPerView: 1.25,
         centeredSlides: true,
-        centerInsufficientSlides: true,
         a11y: {
           containerMessage: 'Your Accounts',
           paginationBulletMessage: 'Go to Account {{index}}',
@@ -95,6 +94,10 @@ export default {
   margin: 0 auto;
 }
 
+.swiper-wrapper {
+  padding-top: 4px;
+}
+
 .swiper-container {
   height: 240px;
 }
@@ -103,7 +106,6 @@ export default {
   border: 1px solid #ccc;
   transition: all .2s;
   height: 166px;
-  width: 312px;
   background-color: white;
   border-radius: 15px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
@@ -112,12 +114,15 @@ export default {
 
 .swiper-slide-active {
   margin-top: 0;
-  transform: scale(1);
   height: 196px;
   margin-top: 0;
 }
 
 /** PAGINATION */ 
+.swiper-pagination-bullets {
+  bottom: 6px;
+}
+
 .swiper-pagination-bullet {
   height: 12px;
   width: 12px;
