@@ -30,8 +30,10 @@ export default {
         },
         spaceBetween: 10, // achieves the 15px gap between carousel slides as prescribed in final design
         grabCursor: true,
-        slidesPerView: 'auto', // this combined with set width of carousel panes gives us the "peeking" effect
+        // slidesPerView: 'auto', // this combined with set width of carousel panes gives us the "peeking" effect
+        slidesPerView: 1.2,
         centeredSlides: true,
+        centerInsufficientSlides: true,
         a11y: {
           containerMessage: 'Your Accounts',
           paginationBulletMessage: 'Go to Account {{index}}',
@@ -112,7 +114,6 @@ export default {
   margin-top: 0;
   transform: scale(1);
   height: 196px;
-  width: 312px;
   margin-top: 0;
 }
 
