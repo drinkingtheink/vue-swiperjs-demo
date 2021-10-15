@@ -2,7 +2,7 @@
   <div class="hello">
     <swiper 
       ref="accountCarousel" 
-      :options="swiperOptions"
+      :options="carouselOptions"
     >
       <swiper-slide>Slide 1</swiper-slide>
       <swiper-slide>Slide 2</swiper-slide>
@@ -19,13 +19,10 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'AccountCarousel',
   data() {
     return {
-      swiperOptions: {
+      carouselOptions: {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -34,6 +31,10 @@ export default {
         grabCursor: true,
         slidesPerView: 3,
         centeredSlides: true,
+        keyboard: {
+          enabled: true,
+          onlyInViewport: false,
+        },
       }
     }
   },
@@ -55,10 +56,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .swiper-container {
-  height: 200px;
+  height: 300px;
 }
 
 .swiper-slide {
   border: 1px solid black;
+  transition: all .2s;
+  height: 220px;
+  margin-top: 15px;
+}
+
+.swiper-slide-active {
+  height: 250px;
+  margin-top: 0;
 }
 </style>
