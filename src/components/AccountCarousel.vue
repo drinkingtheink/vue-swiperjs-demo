@@ -27,9 +27,9 @@ export default {
           el: '.swiper-pagination',
           clickable: true,
         },
-        spaceBetween: 20,
+        spaceBetween: -8, // achieves the 15px gap between carousel slides as prescribed in final design
         grabCursor: true,
-        slidesPerView: 2,
+        slidesPerView: 'auto', // this combined with set width of carousel panes gives us the "peeking" effect
         centeredSlides: true,
         keyboard: {
           enabled: true,
@@ -55,19 +55,33 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.stage {
+  max-width: 376px;
+  margin: 0 auto;
+}
+
 .swiper-container {
-  height: 300px;
+  height: 240px;
 }
 
 .swiper-slide {
   border: 1px solid black;
   transition: all .2s;
-  height: 220px;
-  margin-top: 15px;
+  height: 196px;
+  width: 312px;
+  transform: scale(0.9);
+  background-color: white;
+  border-radius: 10px;
 }
 
 .swiper-slide-active {
-  height: 250px;
   margin-top: 0;
+  transform: scale(1);
+}
+
+@media only screen and (max-width: 376px) {
+  .stage {
+    width: 100vw;
+  }
 }
 </style>
