@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="stage">
     <swiper 
       ref="accountCarousel" 
       :options="carouselOptions"
@@ -29,7 +29,7 @@ export default {
         },
         spaceBetween: 20,
         grabCursor: true,
-        slidesPerView: 3,
+        slidesPerView: 2,
         centeredSlides: true,
         keyboard: {
           enabled: true,
