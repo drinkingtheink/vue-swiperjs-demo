@@ -125,6 +125,7 @@ export default {
 
 .swiper-pagination-bullet-active {
   background-color: #006eb2;
+  opacity: 1;
 }
 
 .swiper-pagination-bullet-active:hover {
