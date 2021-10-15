@@ -28,7 +28,7 @@ export default {
           el: '.swiper-pagination',
           clickable: true,
         },
-        spaceBetween: 5, // achieves the 15px gap between carousel slides as prescribed in final design
+        spaceBetween: 10, // achieves the 15px gap between carousel slides as prescribed in final design
         grabCursor: true,
         slidesPerView: 'auto', // this combined with set width of carousel panes gives us the "peeking" effect
         centeredSlides: true,
@@ -102,7 +102,7 @@ export default {
   transition: all .2s;
   height: 196px;
   width: 312px;
-  transform: scale(0.9);
+  transform: scale(0.5);
   background-color: white;
   border-radius: 15px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
