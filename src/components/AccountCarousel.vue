@@ -100,17 +100,20 @@ export default {
 .swiper-slide {
   border: 1px solid #ccc;
   transition: all .2s;
-  height: 196px;
+  height: 166px;
   width: 312px;
-  transform: scale(0.5);
   background-color: white;
   border-radius: 15px;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
 }
 
 .swiper-slide-active {
   margin-top: 0;
   transform: scale(1);
+  height: 196px;
+  width: 312px;
+  margin-top: 0;
 }
 
 /** PAGINATION */ 
